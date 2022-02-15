@@ -22,32 +22,48 @@ body {
 }
 
 .deck {
-  display: grid;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: auto;
   padding: 20px;
-  grid-template-columns: repeat(5, 1fr);
   background-color: grey;
-  width: 70%;
+  width: 40%;
 }
 
 .card {
+  position: relative;
   width: 140px;
   height: 240px;
-  margin: 10px;
-  background-color: black;
+  margin: 1%;
   border-radius: 4px;
-  border: #212121 1px solid;
   box-shadow: 1px 8px 8px#000000e1;
   transition: 0.6s;
+}
+.card-front .card-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .card-front {
   background-color: rgb(199, 148, 148);
+  transform-style: preserve-3d;
+  transition: 1.5s ease;
   transform: rotateY(180deg);
 }
 
-#easyMode {
+.container {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-flow: column wrap;
+}
+
+img {
+  width: 140px;
+  height: 240px;
+}
+
+#mode1, #mode2{
+  display: none;
 }
