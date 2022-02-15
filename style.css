@@ -1,0 +1,53 @@
+* {
+  font-family: fantasy;
+}
+
+.startScreen button {
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.screen {
+  display: block;
+}
+
+body {
+  text-align: center;
+  background-color: azure;
+}
+
+.deck {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: grey;
+  width: 70%;
+}
+
+.card {
+  width: 140px;
+  height: 240px;
+  margin: 10px;
+  background-color: black;
+  border-radius: 4px;
+  border: #212121 1px solid;
+  box-shadow: 1px 8px 8px#000000e1;
+  transition: 0.6s;
+}
+
+.card-front {
+  background-color: rgb(199, 148, 148);
+  transform: rotateY(180deg);
+}
+
+#easyMode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+}
