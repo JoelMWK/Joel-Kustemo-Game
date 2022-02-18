@@ -38,7 +38,7 @@ body {
   margin: 1%;
   border-radius: 4px;
   box-shadow: 1px 8px 8px#000000e1;
-  transition: 0.6s;
+  transition: 0.6s ease;
 }
 .card-front .card-back {
   position: absolute;
@@ -49,7 +49,7 @@ body {
 .card-front {
   background-color: rgb(199, 148, 148);
   transform-style: preserve-3d;
-  transition: 1.5s ease;
+  transition: 0.6s ease;
   transform: rotateY(180deg);
 }
 
@@ -64,6 +64,7 @@ img {
   height: 240px;
 }
 
-#mode1, #mode2{
+#mode1,
+#mode2 {
   display: none;
 }

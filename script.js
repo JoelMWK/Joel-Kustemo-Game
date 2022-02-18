@@ -1,6 +1,9 @@
 let flipper = document.querySelectorAll(".card");
 let deck = document.querySelector(".deck");
-const cardArray = [
+let backImage = document.querySelectorAll(".front-image");
+let matched = [];
+let flipped = [];
+let cardArray = [
   "front1.jpg",
   "front1.jpg",
   "front2.jpg",
@@ -10,36 +13,62 @@ const cardArray = [
   "front4.jpg",
   "front4.jpg",
   "front5.jpg",
-  "front5.jpg"
+  "front5.jpg",
 ];
 
-const cards = document.querySelector(".card");
 
-let matched = [];
-let flipped = [];
+flipper.forEach((card) => {
+  card.addEventListener("click", cardFlipper);
 
-flipper.forEach(card => {
-  card.addEventListener("click", cardFlipper)
+  
 });
 
 function cardFlipper() {
   this.classList.toggle("card-front");
+  checkFlipped();
 }
 
+function random () {
+  let cardDeck = cardArray;
+  console.log(cardDeck);
 
-const random = () => {
-  const cardDeck = cardArray;
-  console.log(cardDeck)
-  cardArray.sort(()=> Math.random() - 0.5)
+  //sort --> sorterar sakerna i arrayen i storleks ordning
+  //Math.random()-0.5 --> ger ett nummer som är negativt eller positivt
+  //Istället för att göra dem i storleks ordning så blir det ordningen (a,b) eller (b,a) --> det blir då en shuffle av bilderna
+  cardArray.sort(() => Math.random() - 0.5);
+
+  cardDeck.forEach(item => {
+    console.log(item);
+
+    for(var i = 0; i < backImage.length; i++){
+      item = cardDeck[i];
+      var currentImage = backImage[i];
+      currentImage.src = "Pictures/" + item;
+    }
+  });
 };
+
+//När man anropar funktionen changeMode så blir startScreen display "none" och man byter till #mode1 eller #mode2 beroende på "modeIndex"
+function changeMode(modeIndex) {
+  document.querySelector(".startScreen").style.display = "none";
+
+  document.querySelector("#mode" + modeIndex).style.display = "block";
+}
 
 random();
 
+function checkFlipped(){
 
+flipped.push(this);
 
-function changeMode(modeIndex){
-  
-  document.querySelector(".startScreen").style.display="none";
+if(flipped.length === 2){
 
-  document.querySelector("#mode" + modeIndex).style.display="block";  
+  if(flipped[0] === flipped[1]){
+    alert("Correct!")
+  }
+  else if(flipped[0] != flipped[1]){
+    alert("Wrong!")
+  }
+}
+
 }
