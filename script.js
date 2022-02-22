@@ -19,13 +19,10 @@ let cardArray = [
 
 flipper.forEach((card) => {
   card.addEventListener("click", cardFlipper);
-
-  
 });
 
 function cardFlipper() {
-  this.classList.toggle("card-front");
-  checkFlipped();
+  this.classList.toggle("card-front");  
 }
 
 function random () {
@@ -56,19 +53,3 @@ function changeMode(modeIndex) {
 }
 
 random();
-
-function checkFlipped(){
-
-flipped.push(this);
-
-if(flipped.length === 2){
-
-  if(flipped[0] === flipped[1]){
-    alert("Correct!")
-  }
-  else if(flipped[0] != flipped[1]){
-    alert("Wrong!")
-  }
-}
-
-}
