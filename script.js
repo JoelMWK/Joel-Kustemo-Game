@@ -1,4 +1,5 @@
 let flipper = document.querySelectorAll(".card");
+let back = document.querySelector(".card-back");
 let deck = document.querySelector(".deck");
 let backImage = document.querySelectorAll(".front-image");
 let matched = [];
@@ -16,13 +17,22 @@ let cardArray = [
   "front5.jpg",
 ];
 
-
 flipper.forEach((card) => {
   card.addEventListener("click", cardFlipper);
 });
 
 function cardFlipper() {
-  this.classList.toggle("card-front");  
+  this.classList.toggle("card-front");
+  console.log(flipped);
+
+  if(flipped.length === 2){
+    if(flipped[0] === flipped[1]){
+      alert("Correct")
+    }
+    else{
+      alert("Wrong")
+    }
+  }
 }
 
 function random () {
