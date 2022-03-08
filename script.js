@@ -1,9 +1,8 @@
 let flipper = document.querySelectorAll(".card");
 let back = document.querySelector(".card-back");
 let deck = document.querySelector(".deck");
-let backImage = document.querySelectorAll(".front-image");
+let frontImage = document.querySelectorAll(".front-image");
 let matched = [];
-let flipped = [];
 let cardArray = [
   "front1.jpg",
   "front1.jpg",
@@ -15,6 +14,12 @@ let cardArray = [
   "front4.jpg",
   "front5.jpg",
   "front5.jpg",
+  "front6.jpg",
+  "front6.jpg",
+  "front7.jpg",
+  "front7.jpg",
+  "front8.jpg",
+  "front8.jpg"
 ];
 
 flipper.forEach((card) => {
@@ -23,17 +28,8 @@ flipper.forEach((card) => {
 
 function cardFlipper() {
   this.classList.toggle("card-front");
-  console.log(flipped);
-
-  if(flipped.length === 2){
-    if(flipped[0] === flipped[1]){
-      alert("Correct")
-    }
-    else{
-      alert("Wrong")
-    }
-  }
 }
+
 
 function random () {
   let cardDeck = cardArray;
@@ -47,12 +43,12 @@ function random () {
   cardDeck.forEach(item => {
     console.log(item);
 
-    for(var i = 0; i < backImage.length; i++){
+    for(var i = 0; i < frontImage.length; i++){
       item = cardDeck[i];
-      var currentImage = backImage[i];
+      var currentImage = frontImage[i];
       currentImage.src = "Pictures/" + item;
     }
-  });
+  });  
 };
 
 //När man anropar funktionen changeMode så blir startScreen display "none" och man byter till #mode1 eller #mode2 beroende på "modeIndex"
