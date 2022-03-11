@@ -31,7 +31,7 @@ body {
   background-color: grey;
   width: 55%;
   perspective: 1200px;
-  border: 10px dashed black;
+  border: 10px double black;
 }
 
 .card {
@@ -72,3 +72,4 @@ img {
 #mode2 {
   display: none;
 }
+
