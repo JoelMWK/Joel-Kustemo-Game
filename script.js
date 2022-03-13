@@ -3,7 +3,7 @@ let back = document.querySelector(".card-back");
 let deck = document.querySelector(".deck");
 let frontImage = document.querySelectorAll(".front-image");
 let timerCount = document.querySelector(".timer");
-let time = 0;
+let time = 60;
 let livesCount = document.querySelector(".lives");
 let lives = 3;
 let matchedCount = document.querySelector(".matched");
@@ -28,12 +28,9 @@ let cardArray = [
   "front8.jpg",
 ];
 
-function timer() {
-  setInterval(() => {
-    time++;
-    timerCount.innerHTML = "Time Played: " + time + "s";
-  }, 1000);
-}
+let changeHealth = document.querySelector(".health");
+let changeTime = document.querySelector(".counter");
+let interval = setInterval(timer, 1000);
 
 flipper.forEach((card) => {
   card.addEventListener("click", cardFlipper);
@@ -41,22 +38,41 @@ flipper.forEach((card) => {
 
 function cardFlipper(e) {
   this.classList.toggle("card-front");
+  cardCheck(e);
+}
 
- 
-  console.log(e.target.src);
-  console.log(flipped);
-
+function cardCheck(e) {
+  var flippedImage = e.target;
+  flipped.push(flippedImage);
   if (flipped.length === 2) {
-    if (flipped[0] === flipped[1]) {
+    document.body.style.pointerEvents = "none";
+    if (
+      flipped[0].lastElementChild.firstElementChild.src ===
+      flipped[1].lastElementChild.firstElementChild.src
+    ) {
       console.log("correct");
+      flipped.forEach((element) => {
+        setTimeout(() => {
+          element.style.pointerEvents = "none";
+          document.body.style.pointerEvents = "all";
+        }, 1000);
+      });
 
-      matched++;
-      matchedCount.innerHTML = "Matched: " + matched;
+      cardRemove();
+      livesGain();
+      match();
     } else {
       console.log("wrong");
 
-      lives--;
-      livesCount.innerHTML = "Lives: " + lives;
+      flipped.forEach((element) => {
+        setTimeout(() => {
+          element.classList.remove("card-front");
+          document.body.style.pointerEvents = "all";
+        }, 1200);
+      });
+
+      cardRemove();
+      livesLoss();
     }
   }
 }
@@ -79,13 +95,85 @@ function cardShuffle() {
   });
 }
 
-//När man anropar funktionen changeMode så blir startScreen display "none" och man byter till #mode1 eller #mode2 beroende på "modeIndex"
-function changeMode(modeIndex) {
-  document.querySelector(".startScreen").style.display = "none";
+function changeMode(pageIndex) {
+  document.querySelector("#page1").style.display = "none";
+  document.querySelector("#page2").style.display = "none";
+  document.querySelector("#page" + pageIndex).style.display = "block";
 
-  document.querySelector("#mode" + modeIndex).style.display = "block";
-
-  timer();
+  if (pageIndex == 2) {
+    timer();
+    cardShuffle();
+  } else {
+    location.reload();
+  }
 }
 
-cardShuffle();
+function timer() {
+  time--;
+  timerCount.innerHTML = "Timecounter: " + time + "s";
+  if (time == 0) {
+    setTimeout(() => {
+      alert("You lost!");
+      stopClick();
+      clearInterval(interval);
+    }, 500);
+  }
+}
+function cardRemove() {
+  flipped.pop();
+  flipped.pop();
+}
+function livesGain() {
+  lives++;
+  livesCount.innerHTML = "Lives: " + lives;
+}
+function stopClick() {
+  flipper.forEach((element) => {
+    element.removeEventListener("click", cardFlipper);
+  });
+}
+function livesLoss() {
+  lives--;
+  livesCount.innerHTML = "Lives: " + lives;
+
+  if (lives == 0) {
+    setTimeout(() => {
+      alert("You lost!");
+      stopClick();
+      clearInterval(interval);
+    }, 500);
+  }
+}
+function match() {
+  matched++;
+  matchedCount.innerHTML = "Matched: " + matched;
+  if (matched === cardArray.length / 2) {
+    setTimeout(() => {
+      alert("You won!");
+      stopClick();
+      clearInterval(interval);
+    }, 500);
+  }
+}
+
+function increaseLives() {
+  lives++;
+  livesCount.innerHTML = "Lives: " + lives;
+  changeHealth.innerHTML = lives;
+}
+
+function decreaseLives() {
+  lives--;
+  livesCount.innerHTML = "Lives: " + lives;
+  changeHealth.innerHTML = lives;
+}
+
+function decreaseTime() {
+  time -= 10;
+  changeTime.innerHTML = time + "s";
+}
+
+function increaseTime() {
+  time += 10;
+  changeTime.innerHTML = time + "s";
+}

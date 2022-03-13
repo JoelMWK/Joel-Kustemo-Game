@@ -9,89 +9,137 @@
     <title>Memory card</title>
   </head>
   <body>
-    <div class="startScreen">
+    <div id="page1" class="startScreen">
       <h1>Memory card game</h1>
-      <button id="tab1" onclick="changeMode(1)">Easy</button>
-      <button id="tab2" onclick="changeMode(2)">Normal</button>
-    </div>
+      <button id="tab1" onclick="changeMode(2)">Normal</button>
 
-    <div id="mode1">
-      <h1>Easy Mode</h1>
-      <div class="timer">Time Played: 0s </div>
-      <div class="lives">Lives: 3</div>
-      <div class="matched">Matched: 0st</div>
-      <div class="container">
-      <div class="deck">
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
+      <div>
+        <h2>Change difficulty</h2>
+        <p>Lives</p>
+        <div class="level">
+          <button class="button" onclick="increaseLives();">+</button>
+          <p class="health">3</p>
+          <button class="button" onclick="decreaseLives();">-</button>
         </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
-        </div>
-        <div class="card">
-          <div class="card-back"><img src="Pictures/cardback.png" alt=""></div>
-          <div class="card-front"><img class="front-image"></div>
+        <p>Timecounter</p>
+        <div class="level">
+          <button class="button" onclick="increaseTime();">+</button>
+          <p class="counter">60s</p>
+          <button class="button" onclick="decreaseTime();">-</button>
         </div>
       </div>
     </div>
-    </div>
 
-    <div id="mode2">
+    <div id="page2">
       <h1>Normal Mode</h1>
+      <button id="tab2" onclick="changeMode(1)">Startscreen</button>
+
+      <div class="info">
+        <div class="timer">Timecounter: 60s</div>
+        <div class="lives">Lives: 3</div>
+        <div class="matched">Matched: 0</div>
+      </div>
+
+      <div class="container">
+        <div class="deck">
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+          <div class="card">
+            <div class="card-back">
+              <img src="Pictures/cardback.png" alt="" />
+            </div>
+            <div class="card-front"><img class="front-image" /></div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
