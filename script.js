@@ -30,6 +30,7 @@ let cardArray = [
 
 let changeHealth = document.querySelector(".health");
 let changeTime = document.querySelector(".counter");
+let interval;
 
 flipper.forEach((card) => {
   card.addEventListener("click", cardFlipper);
@@ -94,6 +95,7 @@ function cardShuffle() {
 }
 
 function changeMode(pageIndex) {
+  interval = setInterval(timer, 1000);
   document.querySelector("#page1").style.display = "none";
   document.querySelector("#page2").style.display = "none";
   document.querySelector("#page" + pageIndex).style.display = "block";
@@ -107,10 +109,8 @@ function changeMode(pageIndex) {
 }
 
 function timer() {
-  setInterval(() => {
-    time--;
-    timerCount.innerHTML = "Timecounter: " + time + "s";
-  }, 1000);
+  time--;
+  timerCount.innerHTML = "Timecounter: " + time + "s";
   if (time <= 0) {
     setTimeout(() => {
       alert("You lost!");
