@@ -30,13 +30,15 @@ let cardArray = [
 
 let changeHealth = document.querySelector(".health");
 let changeTime = document.querySelector(".counter");
-let interval = setInterval(timer, 1000);
 
 flipper.forEach((card) => {
   card.addEventListener("click", cardFlipper);
 });
 
 function cardFlipper(e) {
+  if (flipped[0] === this) {
+    return;
+  }
   this.classList.toggle("card-front");
   cardCheck(e);
 }
@@ -78,15 +80,11 @@ function cardCheck(e) {
 }
 
 function cardShuffle() {
-  console.log(cardArray);
-
   //sort --> sorterar sakerna i arrayen i storleks ordning
   //Math.random()-0.5 --> ger ett nummer som är negativt eller positivt
   //Istället för att göra dem i storleks ordning så blir det ordningen (a,b) eller (b,a) --> det blir då en shuffle av bilderna
   cardArray.sort(() => Math.random() - 0.5);
   cardArray.forEach((item) => {
-    console.log(item);
-
     for (var i = 0; i < frontImage.length; i++) {
       item = cardArray[i];
       var currentImage = frontImage[i];
@@ -109,9 +107,11 @@ function changeMode(pageIndex) {
 }
 
 function timer() {
-  time--;
-  timerCount.innerHTML = "Timecounter: " + time + "s";
-  if (time == 0) {
+  setInterval(() => {
+    time--;
+    timerCount.innerHTML = "Timecounter: " + time + "s";
+  }, 1000);
+  if (time <= 0) {
     setTimeout(() => {
       alert("You lost!");
       stopClick();
@@ -124,6 +124,10 @@ function cardRemove() {
   flipped.pop();
 }
 function livesGain() {
+  document.body.classList.add("gain");
+  setTimeout(() => {
+    document.body.classList.remove("gain");
+  }, 1000);
   lives++;
   livesCount.innerHTML = "Lives: " + lives;
 }
@@ -133,9 +137,12 @@ function stopClick() {
   });
 }
 function livesLoss() {
+  document.body.classList.add("loss");
+  setTimeout(() => {
+    document.body.classList.remove("loss");
+  }, 1000);
   lives--;
   livesCount.innerHTML = "Lives: " + lives;
-
   if (lives == 0) {
     setTimeout(() => {
       alert("You lost!");
@@ -158,22 +165,32 @@ function match() {
 
 function increaseLives() {
   lives++;
-  livesCount.innerHTML = "Lives: " + lives;
   changeHealth.innerHTML = lives;
+  if (lives >= 20) {
+    lives = 20;
+  }
 }
 
 function decreaseLives() {
   lives--;
-  livesCount.innerHTML = "Lives: " + lives;
   changeHealth.innerHTML = lives;
+  if (lives <= 3) {
+    lives = 3;
+  }
 }
 
 function decreaseTime() {
   time -= 10;
   changeTime.innerHTML = time + "s";
+  if (time <= 30) {
+    time = 30;
+  }
 }
 
 function increaseTime() {
   time += 10;
   changeTime.innerHTML = time + "s";
+  if (time >= 180) {
+    time = 180;
+  }
 }
