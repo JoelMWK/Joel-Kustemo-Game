@@ -53,7 +53,6 @@ function cardCheck(e) {
       flipped[0].lastElementChild.firstElementChild.src ===
       flipped[1].lastElementChild.firstElementChild.src
     ) {
-      console.log("correct");
       flipped.forEach((element) => {
         setTimeout(() => {
           element.style.pointerEvents = "none";
@@ -65,8 +64,6 @@ function cardCheck(e) {
       livesGain();
       match();
     } else {
-      console.log("wrong");
-
       flipped.forEach((element) => {
         setTimeout(() => {
           element.classList.remove("card-front");
