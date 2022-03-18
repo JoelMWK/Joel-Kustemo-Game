@@ -138,6 +138,11 @@ img {
 .difficulty {
   margin: 8%;
 }
+.difficulty h3{
+  color: white;
+  font-size: 16px;
+  text-shadow: 2px 2px 2px black;
+}
 
 @keyframes loss {
   0% {

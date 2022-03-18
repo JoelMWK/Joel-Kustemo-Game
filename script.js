@@ -164,32 +164,34 @@ function match() {
 }
 
 function increaseLives() {
-  lives++;
   changeHealth.innerHTML = lives;
+  livesCount.innerHTML = "Lives: " + lives;
+  lives++;
   if (lives >= 20) {
     lives = 20;
   }
 }
 
 function decreaseLives() {
-  lives--;
   changeHealth.innerHTML = lives;
+  livesCount.innerHTML = "Lives: " + lives;
+  lives--;
   if (lives <= 3) {
     lives = 3;
   }
 }
 
 function decreaseTime() {
-  time -= 10;
   changeTime.innerHTML = time + "s";
+  time -= 10;
   if (time <= 30) {
     time = 30;
   }
 }
 
 function increaseTime() {
-  time += 10;
   changeTime.innerHTML = time + "s";
+  time += 10;
   if (time >= 180) {
     time = 180;
   }
