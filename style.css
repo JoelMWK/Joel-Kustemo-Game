@@ -36,9 +36,9 @@ body {
   text-align: center;
   background: linear-gradient(
     to right,
-    rgb(0, 80, 0),
-    rgb(0, 218, 0),
-    rgb(0, 80, 0)
+    #4b7551,
+    #8a9e52,
+    #4b7551
   );
   user-select: none;
 }
@@ -51,11 +51,10 @@ body {
   margin: auto;
   padding: 20px;
   border-radius: 1vw;
-  background-color: grey;
+  background-color: #304d4e;
   width: 55%;
   perspective: 1200px;
-  border: 10px solid black;
-  border-image: linear-gradient(to right, turquoise, greenyellow) 1;
+  border: 10px solid azure;
 }
 
 .card {
